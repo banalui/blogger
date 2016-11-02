@@ -8,8 +8,12 @@
   <% end %>
 </p>
 
+
+<h3>Images (<%= @article.attachments.size %>)</h3>
 <p>
-	<%= @article.body %>
+	<% @article.attachments.each do |attachment| %>
+    	<p><%= image_tag attachment.image.url(:medium) %></p>
+    <% end %>
 </p><br><br><br><br>
 
 <h3>Comments (<%= @article.comments.size %>)</h3>

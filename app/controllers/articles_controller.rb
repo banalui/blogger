@@ -1,6 +1,15 @@
 class ArticlesController < ApplicationController
 	include ArticlesHelper
 
+
+	before_filter :require_login, except: [:show, :index]
+	def require_login
+    	unless logged_in?
+      		flash.notice = "You must be logged in to access this section"
+      		redirect_to root_path
+    	end
+    end
+    
 	def index
 		@articles = Article.order(:title)
 	end

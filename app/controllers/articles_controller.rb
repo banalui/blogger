@@ -24,6 +24,8 @@ class ArticlesController < ApplicationController
 
 	def new
 		@article = Article.new
+		@attachment = Attachment.new
+		@attachment.article_id = @article_id
 	end
 
 	def create
